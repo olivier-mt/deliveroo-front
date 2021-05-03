@@ -1,1 +1,11 @@
 /* Other rules */
+
+.img-restaurant {
+  width: 350px;
+  height: 200px;
+}
+
+.meal > img {
+  width: 132px;
+  height: 132px;
+}
