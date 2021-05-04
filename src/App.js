@@ -1,5 +1,6 @@
 import "./App.css";
 import Meal from "./Components/Meal";
+import Basket from "./Components/Basket";
 import axios from "axios";
 import Logo from "./logo-deliveroo.png";
 
@@ -8,6 +9,10 @@ import { useState, useEffect } from "react";
 function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [basket, setBasket] = useState([]);
+  const [articleId, setArticleId] = useState("");
+
+  console.log("basket==>", basket);
 
   try {
     useEffect(() => {
@@ -51,7 +56,9 @@ function App() {
           </div>
 
           <div className="main">
+            <Basket basket={basket} setBasket={setBasket} />
             {/*MAP OVER THE DATA */}
+
             {data.categories.map((elem, index) => {
               return (
                 <>
@@ -75,6 +82,10 @@ function App() {
                           picture={picture}
                           popular={popular}
                           id={id}
+                          basket={basket}
+                          setBasket={setBasket}
+                          articleId={articleId}
+                          setArticleId={setArticleId}
                         />
                       );
                     })}

@@ -16,6 +16,17 @@
 
 .main {
   background-color: #f2f5f5;
+  position: relative;
+}
+
+.basket {
+  position: sticky;
+  top: 0;
+  margin-right: 0px;
+  width: 350px;
+  height: 190px;
+  border: black solid 1px;
+  margin-left: 70vw;
 }
 
 .meal-container {
