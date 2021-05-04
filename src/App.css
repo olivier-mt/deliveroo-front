@@ -23,10 +23,25 @@
   position: sticky;
   top: 0;
   margin-right: 0px;
-  width: 350px;
-  height: 190px;
+  width: auto;
+  min-height: 190px;
   border: black solid 1px;
   margin-left: 70vw;
+  padding: 10px;
+}
+
+.basket-button-on,
+.basket-button-off {
+  width: 355px;
+  height: 50px;
+}
+
+.basket-button-on {
+  background-color: #02cdbd;
+}
+
+.basket-button-off {
+  background-color: grey;
 }
 
 .meal-container {

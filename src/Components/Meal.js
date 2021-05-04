@@ -7,27 +7,34 @@ const Meal = ({
   popular,
   basket,
   setBasket,
-  articleId,
-  setArticleId,
+  presentArticleId,
+  setPresentArticleId,
 }) => {
   const handleOnClick = () => {
-    if (basket.length > 0) {
-      setArticleId(id);
-      for (let i = 0; i < basket.length; i++) {
-        {
-          /*  ligne problématique*/
-        }
-        const index = basket.indexOf(basket[i].id === id);
-
-        console.log("index===>", index, basket[i].id, id);
-      }
-    } else {
-      // For the first loop when ARRAy newBasket is empty
-      console.log("loop empty");
+    if (basket.length === 0) {
       const newBasket = [...basket];
-
       newBasket.push({ id: id, title: title, price: price, quantity: 1 });
       setBasket(newBasket);
+    } else {
+      let theIndex = -1;
+
+      const newBasket = [...basket];
+
+      newBasket.map((elem, index) => {
+        if (elem.id === id) {
+          theIndex = index;
+        }
+      });
+
+      if (theIndex === -1) {
+        newBasket.push({ id: id, title: title, price: price, quantity: 1 });
+        setBasket(newBasket);
+      } else {
+        newBasket[theIndex].quantity += 1;
+        setBasket(newBasket);
+      }
+
+      console.log("index==>", theIndex);
     }
   };
 

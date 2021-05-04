@@ -10,7 +10,7 @@ function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [basket, setBasket] = useState([]);
-  const [articleId, setArticleId] = useState("");
+  const [subtotal, setSubTotal] = useState();
 
   console.log("basket==>", basket);
 
@@ -56,7 +56,12 @@ function App() {
           </div>
 
           <div className="main">
-            <Basket basket={basket} setBasket={setBasket} />
+            <Basket
+              basket={basket}
+              setBasket={setBasket}
+              subtotal={subtotal}
+              setSubTotal={setSubTotal}
+            />
             {/*MAP OVER THE DATA */}
 
             {data.categories.map((elem, index) => {
@@ -84,8 +89,6 @@ function App() {
                           id={id}
                           basket={basket}
                           setBasket={setBasket}
-                          articleId={articleId}
-                          setArticleId={setArticleId}
                         />
                       );
                     })}
