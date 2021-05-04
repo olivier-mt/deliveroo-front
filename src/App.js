@@ -1,6 +1,8 @@
 import "./App.css";
 import Meal from "./Components/Meal";
 import axios from "axios";
+import Logo from "./logo-deliveroo.png";
+
 import { useState, useEffect } from "react";
 
 function App() {
@@ -10,7 +12,9 @@ function App() {
   try {
     useEffect(() => {
       const fetchData = async () => {
-        const response = await axios.get("http://localhost:3200/");
+        const response = await axios.get(
+          "https://olivier-deliveroo-back.herokuapp.com/"
+        );
         console.log(response.data);
         setData(response.data);
         setIsLoading(false);
@@ -23,53 +27,65 @@ function App() {
   }
 
   return (
-    <div>
+    <>
+      <header>
+        <div className="center">
+          <img src={Logo} alt="" className="logo" />
+        </div>
+      </header>
       {isLoading ? (
         "Is Loading..."
       ) : (
         <>
-          <h1>{data.restaurant.name}</h1>
-          <p>{data.restaurant.description}</p>
-          <img
-            src={data.restaurant.picture}
-            alt=""
-            className="img-restaurant"
-          />
-          <div>
-            <h2>{data.categories[0].name}</h2>
+          <div className="first-part center">
+            <div>
+              <h1>{data.restaurant.name}</h1>
+              <p>{data.restaurant.description}</p>
+            </div>
 
+            <img
+              src={data.restaurant.picture}
+              alt=""
+              className="img-restaurant"
+            />
+          </div>
+
+          <div className="main">
             {/*MAP OVER THE DATA */}
             {data.categories.map((elem, index) => {
               return (
                 <>
-                  <h2>{elem.name}</h2>;
-                  {elem.meals.map((meal, index) => {
-                    const {
-                      id,
-                      title,
-                      description,
-                      price,
-                      picture,
-                      popular,
-                    } = meal;
-                    return (
-                      <Meal
-                        title={title}
-                        description={description}
-                        price={price}
-                        picture={picture}
-                        popular={popular}
-                        id={id}
-                      /> /*meal.title*/
-                    );
-                  })}
+                  {elem.meals.length > 0 && <h2>{elem.name}</h2>}
+
+                  <div className="meal-container">
+                    {elem.meals.map((meal, index) => {
+                      const {
+                        id,
+                        title,
+                        description,
+                        price,
+                        picture,
+                        popular,
+                      } = meal;
+                      return (
+                        <Meal
+                          title={title}
+                          description={description}
+                          price={price}
+                          picture={picture}
+                          popular={popular}
+                          id={id}
+                        />
+                      );
+                    })}
+                  </div>
                 </>
               );
             })}
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }
 

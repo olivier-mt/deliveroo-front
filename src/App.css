@@ -1,11 +1,84 @@
 /* Other rules */
 
+* {
+  box-sizing: border-box;
+}
+
+.first-part {
+  display: flex;
+  max-width: 1210px;
+}
+
 .img-restaurant {
   width: 350px;
   height: 200px;
 }
 
+.main {
+  background-color: #f2f5f5;
+}
+
+.meal-container {
+  background-color: crimson;
+  display: flex;
+  flex-wrap: wrap;
+  width: 820px;
+  justify-content: space-between;
+  margin-left: 5vw;
+}
+
+.meal {
+  display: flex;
+  width: 405px;
+  height: 165px;
+  background-color: darkkhaki;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 0px;
+  margin-bottom: 25px;
+  justify-content: space-between;
+}
+
+.with-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.meal p {
+  height: 40px;
+  background-color: brown;
+  overflow: hidden;
+  margin: 0px;
+  flex-wrap: wrap;
+}
+
+.meal h3 {
+  margin: 0px;
+}
+
 .meal > img {
   width: 132px;
   height: 132px;
+  object-fit: cover;
+}
+
+.meal > div .no-description {
+  justify-content: space-around;
+}
+
+header {
+  height: auto;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 30px;
+}
+
+header > div > img {
+  width: auto;
+  height: 80px;
+}
+
+.center {
+  width: 96vw;
+  margin: 0 auto;
 }
